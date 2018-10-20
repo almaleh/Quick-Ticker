@@ -9,12 +9,8 @@
 import UIKit
 import ObjectiveC
 
-private enum LabelType {
-    case score
-}
-
-// TODO: provide bundle of settings in a struct
-struct settings {
+// TODO: provide bundle of options in a struct
+struct QTickerOptions {
     
 }
 
@@ -22,24 +18,23 @@ enum QTickerCurve {
     case linear, easeIn, easeOut
 }
 
-extension UILabel {
+fileprivate class QTickerAnimation {
+    lazy var startValue = getStartingValue(from: animationLabel?.text ?? "")
+    let startTime = Date()
+    weak var animationLabel: UILabel?
     
-    func startTicker(duration: TimeInterval = 2, until endValue: Int, curve: QTickerCurve = .linear, completion: (() -> Void)? = nil) {
-        let initialText = self.text ?? "0"
-        self.endValue = endValue
-        
-        animationCurve = curve
+    var animationDisplayLink: CADisplayLink? = nil
+    let animationEndValue: Int
+    let animationCurve: QTickerCurve
+    let animationDuration: TimeInterval
+    
+    init(label: UILabel, duration: TimeInterval, endValue: Int, curve: QTickerCurve) {
+        animationLabel = label
         animationDuration = duration
-        
-        startTime = Date()
-        startValue = getStartingValue(from: initialText)
-        
-        displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
-        displayLink?.add(to: .main, forMode: RunLoop.Mode.default)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
-            completion?()
-        }
+        animationCurve = curve
+        animationEndValue = endValue
+        animationDisplayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
+        animationDisplayLink?.add(to: .main, forMode: RunLoop.Mode.default)
     }
     
     @objc private func handleUpdate() {
@@ -48,15 +43,15 @@ extension UILabel {
         
         if elapsedTime <= animationDuration {
             let percentage = elapsedTime / animationDuration
-            let value = getValueFromPercentage(percentage, startValue: startValue, endValue: endValue, curve: animationCurve)
+            let value = getValueFromPercentage(percentage, startValue: startValue, endValue: animationEndValue, curve: animationCurve)
             
-            if (value != endValue) {
-                self.text = String(value)
+            if (value != animationEndValue) {
+                animationLabel?.text = String(value)
             }
         } else {
-            displayLink?.invalidate()
-            displayLink = nil
-            self.text = String(self.endValue)
+            animationDisplayLink?.invalidate()
+            animationDisplayLink = nil
+            animationLabel?.text = String(self.animationEndValue)
         }
     }
     
@@ -70,7 +65,7 @@ extension UILabel {
         
         switch curve {
         case .linear: return startValue + Int(percentage * Double((endValue - startValue)))
-        
+            
         case .easeOut:
             var curvedPercentage = 1 - percentage
             curvedPercentage = 1 - pow(curvedPercentage, 2.5)
@@ -83,70 +78,23 @@ extension UILabel {
     }
 }
 
-
-extension UILabel {
+class QTicker {
+    //TODO: Convenience initializers
+    typealias EndValue = Int
     
-    //TODO safety precaution: if anything is nil, stop timer instead of crashing
-    private struct AssociatedKeys {
-        static var animationDuration = "animationDuration",
-                   startTime = "StartDate",
-                   displayLink = "displayLink",
-                   startValue = "startValue",
-                   endValue = "endValue",
-                   curve = "curve"
-    }
-    
-    fileprivate var startTime: Date {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.startTime) as? Date ?? Date()
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &AssociatedKeys.startTime, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    fileprivate var animationDuration: TimeInterval {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.animationDuration) as? TimeInterval ?? 2
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &AssociatedKeys.animationDuration, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    fileprivate var displayLink: CADisplayLink? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.displayLink) as? CADisplayLink
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &AssociatedKeys.displayLink, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    fileprivate var startValue: Int {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.startValue) as? Int ?? 0
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &AssociatedKeys.startValue, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    fileprivate var endValue: Int {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.endValue) as? Int ?? 0
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &AssociatedKeys.endValue, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    fileprivate var animationCurve: QTickerCurve {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.curve) as? QTickerCurve ?? .linear
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &AssociatedKeys.curve, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    static func animate(label: UILabel,
+                        duration: TimeInterval = 2,
+                        toEndValue endValue: EndValue,
+                        curve: QTickerCurve = .linear,
+                        completion: (() -> Void)? = nil) {
+        
+        _ = QTickerAnimation(label: label,
+                             duration: duration,
+                             endValue: endValue,
+                             curve: curve)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            completion?()
         }
     }
 }

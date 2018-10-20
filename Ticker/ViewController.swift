@@ -44,14 +44,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        
+        
     }
     
     @IBAction func startTicker(_ sender: UIButton) {
         let startValue = Int(linear.text ?? "") ?? 0
         
-        linear.startTicker(duration: duration, until: endValue, curve: curve) { [unowned self] in
-            self.linear.startTicker(duration: self.duration, until: startValue, curve: self.curve)
-            
+//        linear.startTicker(duration: duration, until: endValue, curve: curve) { [unowned self] in
+//            self.linear.startTicker(duration: self.duration, until: startValue, curve: self.curve)
+//
+//        }
+        
+        QTicker.animate(label: linear, duration: duration, toEndValue: endValue, curve: curve) {
+            print("VICTORY")
         }
         
     }
