@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282668A9217D2E7600F52B00 /* QuickTickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282668A8217D2E7600F52B00 /* QuickTickerTests.swift */; };
 		287271CF2176CEAA00A00423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287271CE2176CEAA00A00423 /* AppDelegate.swift */; };
 		287271D12176CEAA00A00423 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287271D02176CEAA00A00423 /* ViewController.swift */; };
 		287271D42176CEAA00A00423 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287271D22176CEAA00A00423 /* Main.storyboard */; };
@@ -15,7 +16,20 @@
 		287271E12176CF0D00A00423 /* QuickTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287271E02176CF0D00A00423 /* QuickTicker.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		282668AB217D2E7600F52B00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 287271C32176CEAA00A00423 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 287271CA2176CEAA00A00423;
+			remoteInfo = Ticker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		282668A6217D2E7600F52B00 /* QuickTickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickTickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		282668A8217D2E7600F52B00 /* QuickTickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTickerTests.swift; sourceTree = "<group>"; };
+		282668AA217D2E7600F52B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		287271CB2176CEAA00A00423 /* Ticker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ticker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		287271CE2176CEAA00A00423 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		287271D02176CEAA00A00423 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +41,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		282668A3217D2E7600F52B00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		287271C82176CEAA00A00423 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,11 +66,21 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		282668A7217D2E7600F52B00 /* QuickTickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				282668A8217D2E7600F52B00 /* QuickTickerTests.swift */,
+				282668AA217D2E7600F52B00 /* Info.plist */,
+			);
+			path = QuickTickerTests;
+			sourceTree = "<group>";
+		};
 		287271C22176CEAA00A00423 = {
 			isa = PBXGroup;
 			children = (
 				282668A1217D07DA00F52B00 /* Sources */,
 				287271CD2176CEAA00A00423 /* Ticker */,
+				282668A7217D2E7600F52B00 /* QuickTickerTests */,
 				287271CC2176CEAA00A00423 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				287271CB2176CEAA00A00423 /* Ticker.app */,
+				282668A6217D2E7600F52B00 /* QuickTickerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +110,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		282668A5217D2E7600F52B00 /* QuickTickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 282668AD217D2E7600F52B00 /* Build configuration list for PBXNativeTarget "QuickTickerTests" */;
+			buildPhases = (
+				282668A2217D2E7600F52B00 /* Sources */,
+				282668A3217D2E7600F52B00 /* Frameworks */,
+				282668A4217D2E7600F52B00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				282668AC217D2E7600F52B00 /* PBXTargetDependency */,
+			);
+			name = QuickTickerTests;
+			productName = QuickTickerTests;
+			productReference = 282668A6217D2E7600F52B00 /* QuickTickerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		287271CA2176CEAA00A00423 /* Ticker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 287271DD2176CEAB00A00423 /* Build configuration list for PBXNativeTarget "Ticker" */;
@@ -105,6 +155,10 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Besher Al Maleh";
 				TargetAttributes = {
+					282668A5217D2E7600F52B00 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 287271CA2176CEAA00A00423;
+					};
 					287271CA2176CEAA00A00423 = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -124,11 +178,19 @@
 			projectRoot = "";
 			targets = (
 				287271CA2176CEAA00A00423 /* Ticker */,
+				282668A5217D2E7600F52B00 /* QuickTickerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		282668A4217D2E7600F52B00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		287271C92176CEAA00A00423 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,6 +204,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		282668A2217D2E7600F52B00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				282668A9217D2E7600F52B00 /* QuickTickerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		287271C72176CEAA00A00423 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +223,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		282668AC217D2E7600F52B00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 287271CA2176CEAA00A00423 /* Ticker */;
+			targetProxy = 282668AB217D2E7600F52B00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		287271D22176CEAA00A00423 /* Main.storyboard */ = {
@@ -174,6 +252,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		282668AE217D2E7600F52B00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S9M2AHXJQE;
+				INFOPLIST_FILE = QuickTickerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.besher.QuickTickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ticker.app/Ticker";
+			};
+			name = Debug;
+		};
+		282668AF217D2E7600F52B00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S9M2AHXJQE;
+				INFOPLIST_FILE = QuickTickerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.besher.QuickTickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ticker.app/Ticker";
+			};
+			name = Release;
+		};
 		287271DB2176CEAB00A00423 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -329,6 +447,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		282668AD217D2E7600F52B00 /* Build configuration list for PBXNativeTarget "QuickTickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				282668AE217D2E7600F52B00 /* Debug */,
+				282668AF217D2E7600F52B00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		287271C62176CEAA00A00423 /* Build configuration list for PBXProject "Ticker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -19,24 +19,24 @@ private typealias Handler = (() -> Void)?
 public class QuickTicker {
     enum Options {
         case linear, easeIn, easeOut
-        case decimalPoints(_ value: UInt)
+        case decimalPoints(_ value: Int)
     }
     
     /// Starts a ticker animation on a UILabel or TextField using the provided end value. Options include animation curve and decimal points
-    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, withDuration duration: TimeInterval,
-                                                      options: [Options] = [.linear], completion: (() -> Void)? = nil) {
-        
-        _ = QTickerAnimation(label: label, duration: duration, endValue: endValue,
-                             options: options, completion: completion)
+    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, withDuration duration: TimeInterval, options: [Options] = [.linear], completion: (() -> Void)? = nil) {
+        if let label = label {
+            _ = QTickerAnimation(label: label, duration: duration, endValue: endValue,
+                                 options: options, completion: completion)
+        }
     }
     
     /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration and linear curve
-    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, completion: (() -> Void)? = nil) {
+    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, completion: (() -> Void)? = nil) {
         animate(label: label, toEndValue: endValue, withDuration: 2, options: [.linear])
     }
     
     /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration
-    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, options: [Options], completion: (() -> Void)? = nil) {
+    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, options: [Options], completion: (() -> Void)? = nil) {
         animate(label: label, toEndValue: endValue, withDuration: 2, options: options)
     }
     
@@ -187,7 +187,7 @@ extension QTickerAnimation {
     private func getUserRequestedDecimal(from options: [QuickTicker.Options]) -> Int? {
         for option in options {
             switch option {
-            case .decimalPoints(let x): return Int(bitPattern: x)
+            case .decimalPoints(let x): return x >= 0 ? x : 0
             default: continue
             }
         }
@@ -293,3 +293,9 @@ extension UInt64  : NumericValue {func _asOther<T:NumericValue>() -> T { return 
 extension UILabel : TextLabel { }
 extension UITextField: TextLabel { }
 
+protocol QTickerAnimationHost {
+    associatedtype T: NumericValue
+    func handleUpdateFor(_ label: TextLabel?, startTime: Date, animationDuration: TimeInterval,
+                                 startValue: Double, endValue: T, curve: QuickTicker.Options,
+                                 displayLink: CADisplayLink?)
+}
