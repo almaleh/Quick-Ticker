@@ -38,15 +38,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         endValueLabel.delegate = self
+        // Monospace is important to prevent wobbling
         ticker.font = UIFont.monospacedDigitSystemFont(ofSize: 20, weight: .medium)
         
     }
     
     @IBAction func startTicker(_ sender: UIButton) {
-        QuickTicker.animate(label: ticker, toEndValue: endValue, withDuration: duration, options: [curve, .decimalPoints(0)]) {
+        QuickTicker.animate(label: ticker, toEndValue: endValue, withDuration: duration, options: [curve, .decimalPoints(3)]) {
             print("Animation done!")
         }
     }
@@ -69,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetTapped(_ sender: UIButton) {
-        ticker.text = ""
+        ticker.text = "0"
     }
     
     
@@ -83,6 +82,8 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - helper methods
 
 extension ViewController {
     

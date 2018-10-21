@@ -1,13 +1,12 @@
 //
-//  Ticker.swift
-//  Ticker
+//  QuickTicker.swift
+//  QuickTicker
 //
 //  Created by Besher on 2018-10-16.
 //  Copyright © 2018 Besher Al Maleh. All rights reserved.
 //
 
 import UIKit
-import ObjectiveC
 
 protocol TextLabel: class {
     var text: String? { get set }
@@ -15,14 +14,42 @@ protocol TextLabel: class {
 
 private typealias Handler = (() -> Void)?
 
+// MARK: - Public class
+
+public class QuickTicker {
+    enum Options {
+        case linear, easeIn, easeOut
+        case decimalPoints(_ value: UInt)
+    }
+    
+    /// Starts a ticker animation on a UILabel or TextField using the provided end value. Options include animation curve and decimal points
+    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, withDuration duration: TimeInterval,
+                                                      options: [Options] = [.linear], completion: (() -> Void)? = nil) {
+        
+        _ = QTickerAnimation(label: label, duration: duration, endValue: endValue,
+                             options: options, completion: completion)
+    }
+    
+    /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration and linear curve
+    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, completion: (() -> Void)? = nil) {
+        animate(label: label, toEndValue: endValue, withDuration: 2, options: [.linear])
+    }
+    
+    /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration
+    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, options: [Options], completion: (() -> Void)? = nil) {
+        animate(label: label, toEndValue: endValue, withDuration: 2, options: options)
+    }
+    
+}
+
 private class QTickerAnimation<T: NumericValue> {
     
     let animationStartTime = Date()
-    lazy var animationStartValue = getStartingValue(from: animationLabel?.text ?? "")
+    lazy var animationStartValue = getStartingValue(from: animationLabel)
     var userRequestedNumberOfDecimals: Int? = nil
     
     var requiredNumberOfDecimals: Int {
-        // if user requested a specific number we use it, otherwise we infer from end value
+        // if the user requested a specific number we use it, otherwise we infer from end value
         return userRequestedNumberOfDecimals ?? getDecimalCount(input: Double(fromNumeric: animationEndValue))
     }
     
@@ -57,16 +84,17 @@ private class QTickerAnimation<T: NumericValue> {
                                  displayLink: CADisplayLink?) {
         
         var animationDisplayLink = displayLink
-        
         let elapsedTime = Date().timeIntervalSince(startTime)
         
         if elapsedTime <= animationDuration {
+            // Animation still in progress
             let percentage = elapsedTime / animationDuration
             let value = getValueFromPercentage(percentage, startValue: startValue, endValue: endValue, curve: curve)
             if (value != Double(fromNumeric: animationEndValue)) {
                 updateLabel(label, withValue: value, numberOfDecimals: requiredNumberOfDecimals)
             }
         } else {
+            // Animation is over
             animationDisplayLink?.invalidate()
             animationDisplayLink = nil
             updateLabel(label, withValue: Double(fromNumeric: endValue), numberOfDecimals: requiredNumberOfDecimals)
@@ -76,29 +104,41 @@ private class QTickerAnimation<T: NumericValue> {
     
     private func updateLabel(_ label: TextLabel?, withValue value: Double, numberOfDecimals: Int) {
         
+        // apply requested decimals to result
         let power = pow(10, Double(numberOfDecimals))
         let updatedValue = Double(round(power * value) / power)
         
         if numberOfDecimals == 0 {
-            label?.text = String(Int(updatedValue))
+            updateDigitsWhileKeepingText(for: label, value: String(Int(updatedValue)))
         } else {
-            label?.text = String(updatedValue)
+            // padding is needed in case result has zeros after decimal
+            let padded = padValueWithDecimalsIfNeeded(value: updatedValue, requiredDecimals: numberOfDecimals)
+            updateDigitsWhileKeepingText(for: label, value: padded)
         }
     }
+}
     
     
     
-    // Helper methods
+// MARK: - Helper methods
+
+extension QTickerAnimation {
     
-    private func getStartingValue(from start: String) -> Double {
+    private func getStartingValue(from label: TextLabel?) -> Double {
+        let startText = label?.text ?? ""
+        
         // first try to typecast
-        if let digit = Double(start) {
+        if let digit = Double(startText) {
             return digit
         }
-        // filter digits from label if typecast fails
-        let filtered = start.compactMap { Double( String($0)) }
-        let joined = filtered.reduce(0) { $0 * 10 + $1 }
-        return joined
+        
+        let (startIndex, endIndex) = getFirstAndLastDigitIndexes(for: animationLabel)
+        if let start = startIndex, let end = endIndex {
+            let outputString = String(startText[start...end])
+            return Double(outputString) ?? 0
+        }
+        
+        return 0
     }
     
     private func digitIsInt(_ digit: Double) -> Bool {
@@ -147,49 +187,70 @@ private class QTickerAnimation<T: NumericValue> {
     private func getUserRequestedDecimal(from options: [QuickTicker.Options]) -> Int? {
         for option in options {
             switch option {
-            case .decimalPoints(let x): return x
+            case .decimalPoints(let x): return Int(bitPattern: x)
             default: continue
             }
         }
         return nil
     }
     
+    private func getFirstAndLastDigitIndexes(for label: TextLabel?) -> (start: String.Index?, end: String.Index?) {
+        let originalText = label?.text ?? ""
+        var set = NSCharacterSet.decimalDigits
+        set.insert(".")
+        
+        var startIndex: String.Index? = nil
+        var endIndex: String.Index? = nil
+        
+        // find indexes for start and end of digits
+        for (index, char) in originalText.enumerated() {
+            // get unicode value for character
+            let scalarValue = char.unicodeScalars.map { $0.value }.reduce(0, +)
+            if let scalar = UnicodeScalar(scalarValue) {
+                // check if set contains character, i.e valid digit
+                if set.contains(scalar) {
+                    if startIndex == nil {
+                        startIndex = originalText.index(originalText.startIndex, offsetBy: index)
+                    }
+                    endIndex = originalText.index(originalText.startIndex, offsetBy: index)
+                } else {
+                    // exit loop if we already found our range
+                    if startIndex != nil && endIndex != nil { break }
+                }
+            }
+        }
+        
+        return (startIndex, endIndex)
+    }
+    
+    private func updateDigitsWhileKeepingText(for label: TextLabel?, value: String) {
+        let (startIndex, endIndex) = getFirstAndLastDigitIndexes(for: label)
+        if let start = startIndex, let end = endIndex {
+            var updatedText = label?.text ?? ""
+            // replace old digits with new values
+            updatedText.removeSubrange(start...end)
+            updatedText.insert(contentsOf: value, at: start)
+            label?.text = updatedText
+        }
+    }
+    
+    private func padValueWithDecimalsIfNeeded(value: Double, requiredDecimals: Int) -> String {
+        var output = String(value)
+        let valueDecimals = getDecimalCount(input: value)
+        let difference = requiredDecimals - valueDecimals
+        
+        if difference > 0 {
+            // start with 1 because Double already gets an extra 0 after decimal
+            for _ in 1..<difference {
+                output.append("0")
+            }
+        }
+        return output
+    }
 }
 
-// MARK: - Public class
+// MARK: - This protocol is needed to constrain generic input and convert to other types
 
-public class QuickTicker {
-    
-    enum Options {
-        case linear, easeIn, easeOut
-        case decimalPoints(_ value: Int)
-    }
-    
-    //TODO: Convenience initializers
-    
-    /// Starts a ticker animation on a UILabel or TextField using the provided end value. Options include animation curve and decimal points
-    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, withDuration duration: TimeInterval,
-                                                      options: [Options] = [.linear], completion: (() -> Void)? = nil) {
-
-        _ = QTickerAnimation(label: label, duration: duration, endValue: endValue,
-                             options: options, completion: completion)
-    }
-    
-    /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration and linear curve
-    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, completion: (() -> Void)? = nil) {
-        animate(label: label, toEndValue: endValue, withDuration: 2, options: [.linear])
-    }
-    
-    /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration
-    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, options: [Options], completion: (() -> Void)? = nil) {
-        animate(label: label, toEndValue: endValue, withDuration: 2, options: options)
-    }
-    
-}
-
-// MARK: - Protocol is needed to constrain generic input
-
-// This protocol allows us to cast generic input to other types
 protocol NumericValue : Comparable {
     init(_ v:Float)
     init(_ v:Double)
@@ -228,6 +289,7 @@ extension UInt16  : NumericValue {func _asOther<T:NumericValue>() -> T { return 
 extension UInt32  : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
 extension UInt64  : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
 
+// Label needs to have a text property
 extension UILabel : TextLabel { }
 extension UITextField: TextLabel { }
 
