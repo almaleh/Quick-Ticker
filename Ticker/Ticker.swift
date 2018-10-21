@@ -9,40 +9,41 @@
 import UIKit
 import ObjectiveC
 
-// TODO: provide bundle of options in a struct
-struct QTickerOptions {
-    
-}
-
 protocol TextLabel: class {
     var text: String? { get set }
 }
 
+private typealias Handler = (() -> Void)?
 
-fileprivate class QTickerAnimation<T: QTNumericValue> {
+private class QTickerAnimation<T: NumericValue> {
     
     let animationStartTime = Date()
     lazy var animationStartValue = getStartingValue(from: animationLabel?.text ?? "")
+    var userRequestedNumberOfDecimals: Int? = nil
+    
     var requiredNumberOfDecimals: Int {
-        let startValueCount = getDecimalCount(input: animationStartValue)
-        let endValueCount = getDecimalCount(input: Double(fromNumeric: animationEndValue))
-        return max(startValueCount, endValueCount)
+        // if user requested a specific number we use it, otherwise we infer from end value
+        return userRequestedNumberOfDecimals ?? getDecimalCount(input: Double(fromNumeric: animationEndValue))
     }
     
     // The following properties are set during initialization
     weak var animationLabel: TextLabel?
+    var animationCompletion: Handler
     var animationDisplayLink: CADisplayLink? = nil
     let animationEndValue: T
-    let animationCurve: QuickTicker.AnimationCurve
+    var animationCurve: QuickTicker.Options = .linear
     let animationDuration: TimeInterval
     
-    init(label: TextLabel, duration: TimeInterval, endValue: T, curve: QuickTicker.AnimationCurve) {
+    init(label: TextLabel, duration: TimeInterval, endValue: T, options: [QuickTicker.Options],
+        completion: Handler) {
         animationLabel = label
         animationDuration = duration
-        animationCurve = curve
         animationEndValue = endValue
+        animationCurve = getCurveFrom(options)
+        animationCompletion = completion
         animationDisplayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
         animationDisplayLink?.add(to: .main, forMode: RunLoop.Mode.default)
+        userRequestedNumberOfDecimals = getUserRequestedDecimal(from: options)
     }
     
     @objc private func handleUpdate() {
@@ -52,7 +53,7 @@ fileprivate class QTickerAnimation<T: QTNumericValue> {
     }
     
     private func handleUpdateFor(_ label: TextLabel?, startTime: Date, animationDuration: TimeInterval,
-                                 startValue: Double, endValue: T, curve: QuickTicker.AnimationCurve,
+                                 startValue: Double, endValue: T, curve: QuickTicker.Options,
                                  displayLink: CADisplayLink?) {
         
         var animationDisplayLink = displayLink
@@ -62,21 +63,18 @@ fileprivate class QTickerAnimation<T: QTNumericValue> {
         if elapsedTime <= animationDuration {
             let percentage = elapsedTime / animationDuration
             let value = getValueFromPercentage(percentage, startValue: startValue, endValue: endValue, curve: curve)
-            print(value)
             if (value != Double(fromNumeric: animationEndValue)) {
                 updateLabel(label, withValue: value, numberOfDecimals: requiredNumberOfDecimals)
-                print(String(value))
             }
         } else {
             animationDisplayLink?.invalidate()
             animationDisplayLink = nil
             updateLabel(label, withValue: Double(fromNumeric: endValue), numberOfDecimals: requiredNumberOfDecimals)
+            animationCompletion?()
         }
     }
     
     private func updateLabel(_ label: TextLabel?, withValue value: Double, numberOfDecimals: Int) {
-        
-        print("Required number is \(requiredNumberOfDecimals)")
         
         let power = pow(10, Double(numberOfDecimals))
         let updatedValue = Double(round(power * value) / power)
@@ -86,44 +84,20 @@ fileprivate class QTickerAnimation<T: QTNumericValue> {
         } else {
             label?.text = String(updatedValue)
         }
-        
-        
-        
-//        // if no decimals, we return Int value to avoid zeroes
-//        if digitIsInt(value) {
-//            label?.text = String(Int(value))
-//            print("No decimals")
-//        }
-//
-//        // TODO replace with simpler rounding
-//
-//        print("Yes decimals")
-//        // Output with desired decimal count
-//        let text = String(value)
-//        if let dot = text.index(of: ".") {
-//            if let index = text.index(dot, offsetBy: numberOfDecimals,
-//                                      limitedBy: text.index(text.endIndex, offsetBy: -1)) {
-//                if index == dot {
-//                    label?.text = String(Int(value))
-//                } else {
-//                    let firstPart = text[text.startIndex...index]
-//                    label?.text = String(firstPart)
-//                }
-//            }
-//        }
     }
     
+    
+    
+    // Helper methods
+    
     private func getStartingValue(from start: String) -> Double {
-        
+        // first try to typecast
         if let digit = Double(start) {
             return digit
         }
-        
-        
-        
+        // filter digits from label if typecast fails
         let filtered = start.compactMap { Double( String($0)) }
         let joined = filtered.reduce(0) { $0 * 10 + $1 }
-        print("Start was \(start) and end was \(joined)")
         return joined
     }
     
@@ -131,11 +105,9 @@ fileprivate class QTickerAnimation<T: QTNumericValue> {
         return Double(Int(digit)) == digit
     }
     
-    private func getValueFromPercentage(_ percentage: Double, startValue: Double, endValue: T, curve: QuickTicker.AnimationCurve) -> Double {
+    private func getValueFromPercentage(_ percentage: Double, startValue: Double, endValue: T, curve: QuickTicker.Options) -> Double {
         let endDouble = Double(fromNumeric: endValue)
         switch curve {
-        case .linear: return startValue + (percentage * (endDouble - startValue))
-            
         case .easeOut:
             var curvedPercentage = 1 - percentage
             curvedPercentage = 1 - pow(curvedPercentage, 2.8)
@@ -144,6 +116,9 @@ fileprivate class QTickerAnimation<T: QTNumericValue> {
         case .easeIn:
             let curvedPercentage = pow(percentage, 2.8)
             return startValue + (curvedPercentage * (endDouble - startValue))
+            
+        default:
+            return startValue + (percentage * (endDouble - startValue))
         }
     }
     
@@ -158,36 +133,64 @@ fileprivate class QTickerAnimation<T: QTNumericValue> {
         } else { return 0 }
     }
     
+    private func getCurveFrom(_ options: [QuickTicker.Options]) -> QuickTicker.Options {
+        for option in options {
+            switch option {
+            case .easeOut, .easeIn, .linear: return option
+            default: continue
+            }
+        }
+        // default is linear curve
+        return .linear
+    }
+    
+    private func getUserRequestedDecimal(from options: [QuickTicker.Options]) -> Int? {
+        for option in options {
+            switch option {
+            case .decimalPoints(let x): return x
+            default: continue
+            }
+        }
+        return nil
+    }
     
 }
 
-class QuickTicker {
+// MARK: - Public class
+
+public class QuickTicker {
     
-    enum AnimationCurve {
+    enum Options {
         case linear, easeIn, easeOut
+        case decimalPoints(_ value: Int)
     }
     
     //TODO: Convenience initializers
     
-    /// Starts a ticker animation on a UILabel or TextField using the provided end value. Optional parameters include duration, curve, and completion handler. 
-    class func animate<T: QTNumericValue, L: TextLabel>(label: L, toEndValue endValue: T, duration: TimeInterval = 2, 
-                        curve: AnimationCurve = .linear, completion: (() -> Void)? = nil) {
-        
-        _ = QTickerAnimation(label: label, duration: duration, endValue: endValue, curve: curve)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            completion?()
-        }
+    /// Starts a ticker animation on a UILabel or TextField using the provided end value. Options include animation curve and decimal points
+    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, withDuration duration: TimeInterval,
+                                                      options: [Options] = [.linear], completion: (() -> Void)? = nil) {
+
+        _ = QTickerAnimation(label: label, duration: duration, endValue: endValue,
+                             options: options, completion: completion)
     }
     
-    // TODO: find number of decimal points
+    /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration and linear curve
+    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, completion: (() -> Void)? = nil) {
+        animate(label: label, toEndValue: endValue, withDuration: 2, options: [.linear])
+    }
     
-    
+    /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration
+    class func animate<T: NumericValue, L: TextLabel>(label: L, toEndValue endValue: T, options: [Options], completion: (() -> Void)? = nil) {
+        animate(label: label, toEndValue: endValue, withDuration: 2, options: options)
+    }
     
 }
 
+// MARK: - Protocol is needed to constrain generic input
+
 // This protocol allows us to cast generic input to other types
-protocol QTNumericValue : Comparable {
+protocol NumericValue : Comparable {
     init(_ v:Float)
     init(_ v:Double)
     init(_ v:Int)
@@ -204,26 +207,26 @@ protocol QTNumericValue : Comparable {
     
     // 'shadow method' that allows instances of QTickerNumeric
     // to coerce themselves to another QTickerNumeric type
-    func _asOther<T:QTNumericValue>() -> T
+    func _asOther<T:NumericValue>() -> T
 }
 
-extension QTNumericValue {
-    init<T:QTNumericValue>(fromNumeric numeric: T) { self = numeric._asOther() }
+extension NumericValue {
+    init<T:NumericValue>(fromNumeric numeric: T) { self = numeric._asOther() }
 }
 
-extension Float   : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension Double  : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension CGFloat : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension Int     : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension Int8    : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension Int16   : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension Int32   : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension Int64   : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension UInt    : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension UInt8   : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension UInt16  : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension UInt32  : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
-extension UInt64  : QTNumericValue {func _asOther<T:QTNumericValue>() -> T { return T(self) }}
+extension Float   : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension Double  : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension CGFloat : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension Int     : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension Int8    : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension Int16   : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension Int32   : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension Int64   : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension UInt    : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension UInt8   : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension UInt16  : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension UInt32  : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
+extension UInt64  : NumericValue {func _asOther<T:NumericValue>() -> T { return T(self) }}
 
 extension UILabel : TextLabel { }
 extension UITextField: TextLabel { }

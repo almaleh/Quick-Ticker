@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         return rounded
     }
     
-    var curve: QuickTicker.AnimationCurve {
+    var curve: QuickTicker.Options {
         switch segmentedControl.selectedSegmentIndex {
         case 0: return .linear
         case 1: return .easeIn
@@ -46,8 +46,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startTicker(_ sender: UIButton) {
-        QuickTicker.animate(label: ticker, toEndValue: endValue, duration: duration, curve: curve) {
-            print("VICTORY")
+        QuickTicker.animate(label: ticker, toEndValue: endValue, withDuration: duration, options: [curve, .decimalPoints(0)]) {
+            print("Animation done!")
         }
     }
     
