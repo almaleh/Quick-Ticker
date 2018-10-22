@@ -12,7 +12,7 @@ protocol TextLabel: class {
     var text: String? { get set }
 }
 
-private typealias Handler = (() -> Void)?
+typealias QTHandler = (() -> Void)?
 
 // MARK: - Public class
 
@@ -25,7 +25,7 @@ public class QuickTicker {
     /// Starts a ticker animation on a UILabel or TextField using the provided end value. Options include animation curve and decimal points
     class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, withDuration duration: TimeInterval, options: [Options] = [.linear], completion: (() -> Void)? = nil) {
         if let label = label {
-            _ = QTickerAnimation(label: label, duration: duration, endValue: endValue,
+            _ = QTObject(label: label, duration: duration, endValue: endValue,
                                  options: options, completion: completion)
         }
     }
@@ -42,27 +42,28 @@ public class QuickTicker {
     
 }
 
-private class QTickerAnimation<T: NumericValue> {
+internal class QTObject<T: NumericValue> {
     
-    let animationStartTime = Date()
-    lazy var animationStartValue = getStartingValue(from: animationLabel)
-    var userRequestedNumberOfDecimals: Int? = nil
+    private let animationStartTime = Date()
+    private lazy var animationStartValue = getStartingValue(from: animationLabel)
+    private var userRequestedNumberOfDecimals: Int? = nil
     
-    var requiredNumberOfDecimals: Int {
+    private var requiredNumberOfDecimals: Int {
         // if the user requested a specific number we use it, otherwise we infer from end value
         return userRequestedNumberOfDecimals ?? getDecimalCount(input: Double(fromNumeric: animationEndValue))
     }
     
     // The following properties are set during initialization
-    weak var animationLabel: TextLabel?
-    var animationCompletion: Handler
-    var animationDisplayLink: CADisplayLink? = nil
-    let animationEndValue: T
-    var animationCurve: QuickTicker.Options = .linear
-    let animationDuration: TimeInterval
+    private weak var animationLabel: TextLabel?
+    private var animationCompletion: QTHandler
+    private var animationDisplayLink: CADisplayLink? = nil
+    private let animationEndValue: T
+    private var animationCurve: QuickTicker.Options = .linear
+    private let animationDuration: TimeInterval
     
-    init(label: TextLabel, duration: TimeInterval, endValue: T, options: [QuickTicker.Options],
-        completion: Handler) {
+    /// Do not call this initializer. Use QuickTicker's class function instead. This QTObject is only meant to be used internally
+    required init(label: TextLabel, duration: TimeInterval, endValue: T, options: [QuickTicker.Options],
+        completion: QTHandler) {
         animationLabel = label
         animationDuration = duration
         animationEndValue = endValue
@@ -79,7 +80,7 @@ private class QTickerAnimation<T: NumericValue> {
                         displayLink: animationDisplayLink)
     }
     
-    private func handleUpdateFor(_ label: TextLabel?, startTime: Date, animationDuration: TimeInterval,
+    fileprivate func handleUpdateFor(_ label: TextLabel?, startTime: Date, animationDuration: TimeInterval,
                                  startValue: Double, endValue: T, curve: QuickTicker.Options,
                                  displayLink: CADisplayLink?) {
         
@@ -102,7 +103,7 @@ private class QTickerAnimation<T: NumericValue> {
         }
     }
     
-    private func updateLabel(_ label: TextLabel?, withValue value: Double, numberOfDecimals: Int) {
+    func updateLabel(_ label: TextLabel?, withValue value: Double, numberOfDecimals: Int) {
         
         // apply requested decimals to result
         let power = pow(10, Double(numberOfDecimals))
@@ -122,9 +123,9 @@ private class QTickerAnimation<T: NumericValue> {
     
 // MARK: - Helper methods
 
-extension QTickerAnimation {
+extension QTObject {
     
-    private func getStartingValue(from label: TextLabel?) -> Double {
+    func getStartingValue(from label: TextLabel?) -> Double {
         let startText = label?.text ?? ""
         
         // first try to typecast
@@ -141,11 +142,11 @@ extension QTickerAnimation {
         return 0
     }
     
-    private func digitIsInt(_ digit: Double) -> Bool {
+    fileprivate func digitIsInt(_ digit: Double) -> Bool {
         return Double(Int(digit)) == digit
     }
     
-    private func getValueFromPercentage(_ percentage: Double, startValue: Double, endValue: T, curve: QuickTicker.Options) -> Double {
+    func getValueFromPercentage(_ percentage: Double, startValue: Double, endValue: T, curve: QuickTicker.Options) -> Double {
         let endDouble = Double(fromNumeric: endValue)
         switch curve {
         case .easeOut:
@@ -162,7 +163,7 @@ extension QTickerAnimation {
         }
     }
     
-    private func getDecimalCount(input: Double) -> Int {
+    fileprivate func getDecimalCount(input: Double) -> Int {
         if digitIsInt(input) { return 0 }
         let str = String(input)
         if let dot = str.index(of: ".") {
@@ -173,7 +174,7 @@ extension QTickerAnimation {
         } else { return 0 }
     }
     
-    private func getCurveFrom(_ options: [QuickTicker.Options]) -> QuickTicker.Options {
+    fileprivate func getCurveFrom(_ options: [QuickTicker.Options]) -> QuickTicker.Options {
         for option in options {
             switch option {
             case .easeOut, .easeIn, .linear: return option
@@ -184,17 +185,17 @@ extension QTickerAnimation {
         return .linear
     }
     
-    private func getUserRequestedDecimal(from options: [QuickTicker.Options]) -> Int? {
+    fileprivate func getUserRequestedDecimal(from options: [QuickTicker.Options]) -> Int? {
         for option in options {
             switch option {
-            case .decimalPoints(let x): return x >= 0 ? x : 0
+            case .decimalPoints(let x): return x >= 0 ? x : 0 // negative values are not allowed
             default: continue
             }
         }
         return nil
     }
     
-    private func getFirstAndLastDigitIndexes(for label: TextLabel?) -> (start: String.Index?, end: String.Index?) {
+    func getFirstAndLastDigitIndexes(for label: TextLabel?) -> (start: String.Index?, end: String.Index?) {
         let originalText = label?.text ?? ""
         var set = NSCharacterSet.decimalDigits
         set.insert(".")
@@ -223,7 +224,7 @@ extension QTickerAnimation {
         return (startIndex, endIndex)
     }
     
-    private func updateDigitsWhileKeepingText(for label: TextLabel?, value: String) {
+    func updateDigitsWhileKeepingText(for label: TextLabel?, value: String) {
         let (startIndex, endIndex) = getFirstAndLastDigitIndexes(for: label)
         if let start = startIndex, let end = endIndex {
             var updatedText = label?.text ?? ""
@@ -234,14 +235,15 @@ extension QTickerAnimation {
         }
     }
     
-    private func padValueWithDecimalsIfNeeded(value: Double, requiredDecimals: Int) -> String {
+    func padValueWithDecimalsIfNeeded(value: Double, requiredDecimals: Int) -> String {
         var output = String(value)
         let valueDecimals = getDecimalCount(input: value)
         let difference = requiredDecimals - valueDecimals
         
         if difference > 0 {
-            // start with 1 because Double already gets an extra 0 after decimal
-            for _ in 1..<difference {
+            // if equal to int value, we already get a free 0
+            let loopCount = digitIsInt(value) ? (requiredDecimals - 1) : difference
+            for _ in 0..<loopCount {
                 output.append("0")
             }
         }
@@ -292,10 +294,3 @@ extension UInt64  : NumericValue {func _asOther<T:NumericValue>() -> T { return 
 // Label needs to have a text property
 extension UILabel : TextLabel { }
 extension UITextField: TextLabel { }
-
-protocol QTickerAnimationHost {
-    associatedtype T: NumericValue
-    func handleUpdateFor(_ label: TextLabel?, startTime: Date, animationDuration: TimeInterval,
-                                 startValue: Double, endValue: T, curve: QuickTicker.Options,
-                                 displayLink: CADisplayLink?)
-}
