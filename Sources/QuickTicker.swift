@@ -23,6 +23,7 @@
 //  THE SOFTWARE.
 //
 
+
 import UIKit
 
 protocol TextLabel: class {
@@ -39,8 +40,11 @@ public class QuickTicker {
         case decimalPoints(_ value: Int)
     }
     
-    /// Starts a ticker animation on a UILabel or TextField using the provided end value. Options include animation curve and decimal points
-    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, withDuration duration: TimeInterval, options: [Options] = [.linear], completion: (() -> Void)? = nil) {
+    /// Starts a ticker animation on a UILabel or TextField using the provided end value.
+    /// Options include animation curve and decimal points
+    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T,
+                                                      duration: TimeInterval, options: [Options] = [.linear],
+                                                      completion: (() -> Void)? = nil) {
         if let label = label {
             _ = QTObject(label: label, duration: duration, endValue: endValue,
                                  options: options, completion: completion)
@@ -49,12 +53,13 @@ public class QuickTicker {
     
     /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration and linear curve
     class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, completion: (() -> Void)? = nil) {
-        animate(label: label, toEndValue: endValue, withDuration: 2, options: [.linear])
+        animate(label: label, toEndValue: endValue, duration: 2, options: [.linear])
     }
     
     /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration
-    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, options: [Options], completion: (() -> Void)? = nil) {
-        animate(label: label, toEndValue: endValue, withDuration: 2, options: options)
+    class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T,
+                                                      options: [Options], completion: (() -> Void)? = nil) {
+        animate(label: label, toEndValue: endValue, duration: 2, options: options)
     }
     
 }
@@ -78,7 +83,8 @@ internal class QTObject<T: NumericValue> {
     private var animationCurve: QuickTicker.Options = .linear
     private let animationDuration: TimeInterval
     
-    /// Do not call this initializer. Use QuickTicker's class function instead. This QTObject is only meant to be used internally
+    /// Do not call this initializer. Use QuickTicker's class function instead.
+    /// This QTObject is only meant to be used internally
     required init(label: TextLabel, duration: TimeInterval, endValue: T, options: [QuickTicker.Options],
         completion: QTHandler) {
         animationLabel = label
@@ -227,10 +233,14 @@ extension QTObject {
             if let scalar = UnicodeScalar(scalarValue) {
                 // check if set contains character, i.e valid digit
                 if set.contains(scalar) {
-                    if startIndex == nil {
-                        startIndex = originalText.index(originalText.startIndex, offsetBy: index)
+                    let digitIndex = originalText.index(originalText.startIndex, offsetBy: index)
+                    // this check prevents accidental mid-text detection, decimal cannot be start or end index
+                    if char != "." {
+                        if startIndex == nil {
+                            startIndex = digitIndex
+                        }
+                        endIndex = digitIndex
                     }
-                    endIndex = originalText.index(originalText.startIndex, offsetBy: index)
                 } else {
                     // exit loop if we already found our range
                     if startIndex != nil && endIndex != nil { break }

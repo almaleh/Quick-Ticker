@@ -23,6 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+
 import XCTest
 @testable import Ticker
 
@@ -132,6 +133,13 @@ class QuickTickerTests: XCTestCase {
         let (start3, end3) = object.getFirstAndLastDigitIndexes(for: mixedLabel)
         if let start = start3, let end = end3, let labelText = mixedLabel.text {
             XCTAssertEqual(String(labelText[start...end]), "983.1000")
+        }
+        
+        let textLabel = UILabel()
+        textLabel.text = "m.bingo 98"
+        let (start4, end4) = object.getFirstAndLastDigitIndexes(for: textLabel)
+        if let start = start4, let end = end4, let labelText = textLabel.text {
+            XCTAssertEqual(String(labelText[start...end]), "98")
         }
     }
     

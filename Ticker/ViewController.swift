@@ -22,6 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -40,13 +41,12 @@ class ViewController: UIViewController {
         }
     }
     
+    var decimalCount: Int {
+        return getDecimalCount(input: endValue)
+    }
     
     var endValue: Double {
         return Double(endValueLabel.text ?? "") ?? 0
-    }
-    
-    var decimalCount: Int {
-        return getDecimalCount(input: endValue)
     }
     
     var duration: TimeInterval {
@@ -73,9 +73,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startTicker(_ sender: UIButton) {
-        QuickTicker.animate(label: ticker, toEndValue: endValue, withDuration: duration, options: [curve, .decimalPoints(decimalCount)]) {
-            print("Animation done!")
-        }
+        startCustomCounter()
     }
     
     
@@ -103,16 +101,24 @@ class ViewController: UIViewController {
 }
 
 extension ViewController {
+    
+    // Animates the custom animation counter
+    func startCustomCounter() {
+        QuickTicker.animate(label: ticker, toEndValue: endValue, duration: duration, options: [curve, .decimalPoints(decimalCount)]) {
+            print("Animation done!")
+        }
+    }
+    
+    // Animates the 3 demo counters at the bottom
     func startDemoCounters(increment: Bool) {
         for case let stack as UIStackView in demoStack.arrangedSubviews {
             for case let label as UILabel in stack.arrangedSubviews {
-                let counterLabel: UILabel?
                 let endValue: Double = increment ? 100 : 0
-                let duration: Double = 2
+                let duration: Double = 3.5
                 let decimalCount = 0
                 var curve: QuickTicker.Options = .linear
+                label.font = UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)
                 
-                counterLabel = label
                 switch label.tag {
                 case 1: curve = .linear
                 case 2: curve = .easeOut
@@ -120,7 +126,7 @@ extension ViewController {
                 default: continue
                 }
                 
-                QuickTicker.animate(label: counterLabel, toEndValue: endValue, withDuration: duration, options: [curve, .decimalPoints(decimalCount)]) {
+                QuickTicker.animate(label: label, toEndValue: endValue, duration: duration, options: [curve, .decimalPoints(decimalCount)]) {
                     print("Finished animation with \(curve) curve!")
                 }
             }
