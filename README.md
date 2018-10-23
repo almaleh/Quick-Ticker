@@ -20,10 +20,11 @@ Coming soon!
 ## Features
 
 - Simple syntax similar to UIView's animate methods
-- It works even if there is text mixed in with numbers in the same label. Your text will remain intact while the digits get animated!
+- It works even if there is text mixed in with numbers in the same label. Text remains intact while the digits get animated!
 - Works on both UILabels and UITextFields, and accepts any Numeric value (no need to type cast or convert)
 - Completion handler lets you safely queue-up actions following the animation
 - You can optionally specify animation curves and decimal points for the label
+- Completely safe to destroy or deallocate your label mid-animation, no strong reference is kept
 - Unit tested and checked for memory leaks
 
 ## Quick Functions
@@ -34,17 +35,18 @@ QuickTicker.animate(label: textLabel, toEndValue: 250)
 ```
 The default duration is 2 seconds, but that can be easily changed
 ```swift
-QuickTicker.animate(label: TextLabel, toEndValue: 55, withDuration: 4.3)
+QuickTicker.animate(label: textLabel, toEndValue: 250, duration: 4.3)
 ```
 You can also specify the animation curve
 ```swift
-QuickTicker.animate(label: textLabel, toEndValue: 18.12, options: [.easeOut])
+QuickTicker.animate(label: textLabel, toEndValue: 250, options: [.easeOut])
 ```
 ## Advanced Quick Ticker
 
 You can optionally specify the duration, the animation curve, decimal points, and add a completion handler to be executed at the end of the animation. 
 ```swift
-QuickTicker.animate(label: textLabel, toEndValue: 38.89, withDuration: 2.5, options: [.easeOut, .decimalPoints(2)], completion: {
+QuickTicker.animate(label: textLabel, toEndValue: 250, duration: 4.3, 
+                    options: [.easeOut, .decimalPoints(2)], completion: {
 	print("Ticker animation done!")
 	})
 ```
@@ -88,7 +90,7 @@ The example project demonstrates the different ways to use the library. Clone it
 
 - iOS 9.0+
 - Swift 4.2 (you can run it on 4.0 by changing the CADisplayLink api call, one line of code)
-- Xcode 10
+- Xcode 10 (same as above to run on older Xcode)
 
 ## Release History
 
