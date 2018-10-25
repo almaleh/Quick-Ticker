@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'QuickTicker_Example' do
+  pod 'QuickTicker', :path => '../'
+
+  target 'QuickTicker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

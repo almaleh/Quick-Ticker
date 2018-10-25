@@ -115,3 +115,23 @@ Contributors are welcome!
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+
+[![CI Status](https://img.shields.io/travis/BesherAlMaleh/QuickTicker.svg?style=flat)](https://travis-ci.org/BesherAlMaleh/QuickTicker)
+[![Version](https://img.shields.io/cocoapods/v/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
+[![License](https://img.shields.io/cocoapods/l/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
+[![Platform](https://img.shields.io/cocoapods/p/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+
+## Installation
+
+QuickTicker is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'QuickTicker'
+

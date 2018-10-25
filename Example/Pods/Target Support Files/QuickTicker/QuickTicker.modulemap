@@ -1,0 +1,6 @@
+framework module QuickTicker {
+  umbrella header "QuickTicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

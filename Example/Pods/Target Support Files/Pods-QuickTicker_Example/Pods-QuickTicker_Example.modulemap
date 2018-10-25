@@ -1,0 +1,6 @@
+framework module Pods_QuickTicker_Example {
+  umbrella header "Pods-QuickTicker_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

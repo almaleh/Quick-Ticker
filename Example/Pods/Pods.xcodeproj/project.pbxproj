@@ -1,0 +1,759 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05FFB4C9606729F498DC67F0A5696066 /* QuickTicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BCA8EC00D1E7EB4A2604E1AF263E2AF /* QuickTicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D74148AF556E77392F077BFDFA09F6E /* Pods-QuickTicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DCCE101F8FB8DDEAEDA4C874580F98D6 /* Pods-QuickTicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		132492109B7FE17998A80CF35701D65A /* Pods-QuickTicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E9F404B66A1E0F22C38A37475D6361 /* Pods-QuickTicker_Tests-dummy.m */; };
+		6D65B0DF2864D4B7CE203DFD49CC83F3 /* QuickTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077F7A29E76F16A63E750D9A46D2485 /* QuickTicker.swift */; };
+		8970D559AFFEF9F2D86F13F267D4D9E4 /* QuickTicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF9F3E4BC53438A299BDA3767E6C00C /* QuickTicker-dummy.m */; };
+		89FB0DFA58973BE01BDEE3C7ABA77462 /* Pods-QuickTicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BAEE6A2DFED815DFF0F8B9BE5306D8 /* Pods-QuickTicker_Example-dummy.m */; };
+		9C10247CADAFB0BEA6B16ECE0C6E5CE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		ADCF5FC7133064B0ACB97C521DC4F9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		B65C11D1FD4F71AC7B62C1B4BD5B72C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
+		CA15C6A71EB04160BFBBE05FC83BD974 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		DB5CC89ED014C68153BAFE98FD4B097C /* Pods-QuickTicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41D9EDE6522BD60878C832C2BD57E735 /* Pods-QuickTicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8ABD1EA8ECF262EFC987D37AF7586935 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33C5BBEEFAFC0CE9DD951D95D7147048;
+			remoteInfo = QuickTicker;
+		};
+		D6B47CAC3D11595D2EA6B1E6DD64C800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01F8881D8B2F30D4D3E7B4DAF414B683;
+			remoteInfo = "Pods-QuickTicker_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BCA8EC00D1E7EB4A2604E1AF263E2AF /* QuickTicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QuickTicker-umbrella.h"; sourceTree = "<group>"; };
+		1DEFE19418E3D925B1736A212BA48F65 /* Pods-QuickTicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Example-frameworks.sh"; sourceTree = "<group>"; };
+		2201B6C3BE88FEDEBC24C62315837630 /* Pods-QuickTicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		23AC973D59CD8A4FB07F2A382AB54AED /* QuickTicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuickTicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25182CEAC8014E057099D0FC8ABCB07B /* Pods_QuickTicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickTicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		251C9DACCEC047CBA4F978A28F05C63D /* QuickTicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QuickTicker.xcconfig; sourceTree = "<group>"; };
+		2764CE940D817EE1EA56F56DF169A18A /* Pods-QuickTicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QuickTicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2CA9953818446E956B4F2C8EE73BB7F4 /* QuickTicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QuickTicker.modulemap; sourceTree = "<group>"; };
+		3077F7A29E76F16A63E750D9A46D2485 /* QuickTicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTicker.swift; path = QuickTicker/Classes/QuickTicker.swift; sourceTree = "<group>"; };
+		362A1554FCD3BFC3DDDCA018C6AF986B /* Pods-QuickTicker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Tests-resources.sh"; sourceTree = "<group>"; };
+		41D9EDE6522BD60878C832C2BD57E735 /* Pods-QuickTicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QuickTicker_Example-umbrella.h"; sourceTree = "<group>"; };
+		41E58A26286FE01859552E708B8EE6A5 /* Pods_QuickTicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickTicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45E74645D920633414B1A138BC2DD655 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		58CA5BC561EFE951524F1C16588DFA6D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		59793D8FAA15A2111FD18E0883AB269B /* Pods-QuickTicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QuickTicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		63BAEE6A2DFED815DFF0F8B9BE5306D8 /* Pods-QuickTicker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QuickTicker_Example-dummy.m"; sourceTree = "<group>"; };
+		687A921B4DB6DB7EDDBAC1CDFB649D3D /* QuickTicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QuickTicker-prefix.pch"; sourceTree = "<group>"; };
+		6A4A73DE5A18521F627D72F726A6369B /* Pods-QuickTicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QuickTicker_Example.modulemap"; sourceTree = "<group>"; };
+		7F01280DF3057DDA2BE51F4A96FDC53E /* Pods-QuickTicker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QuickTicker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		820036674A7CD00AFD386FDC257EF2DA /* Pods-QuickTicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		899BA96F51335802017B12C85D270D23 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		914F9F2A61EB618D08BB0AF730A94E06 /* Pods-QuickTicker_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A827A734285EE047E8A349A4D5DD739C /* Pods-QuickTicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QuickTicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		AFE2A71BF3227E6436EFEF419A906D1E /* QuickTicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = QuickTicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B995ED4852AE6A8D5DF06C72638CBFF0 /* Pods-QuickTicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C14068977303CD9CF196A93DCF1C896B /* Pods-QuickTicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		CB8DB925DC6E6B4C1ACFA9675710DD8F /* Pods-QuickTicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QuickTicker_Tests.modulemap"; sourceTree = "<group>"; };
+		D24EE543414F33E06B03EE209BDB632B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D904C6126328AE9FCB7D185BD80D16BC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9E9F404B66A1E0F22C38A37475D6361 /* Pods-QuickTicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QuickTicker_Tests-dummy.m"; sourceTree = "<group>"; };
+		DCCE101F8FB8DDEAEDA4C874580F98D6 /* Pods-QuickTicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QuickTicker_Tests-umbrella.h"; sourceTree = "<group>"; };
+		FD8983C0AAF1104C0B2D528EF4D95088 /* Pods-QuickTicker_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Example-resources.sh"; sourceTree = "<group>"; };
+		FEF9F3E4BC53438A299BDA3767E6C00C /* QuickTicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QuickTicker-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		286626CE875553B1A78C99D14CED8C05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA15C6A71EB04160BFBBE05FC83BD974 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99280F2FC528E078C7F584E8E53DD9BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C10247CADAFB0BEA6B16ECE0C6E5CE4 /* Foundation.framework in Frameworks */,
+				B65C11D1FD4F71AC7B62C1B4BD5B72C0 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99ADAF7F17B3F6FFA22E05F76B19720F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADCF5FC7133064B0ACB97C521DC4F9C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D3228C3B6EFA6CC818CF5AE11BE7445 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B501636A81291E0299A9693D7B371EE /* QuickTicker */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		207AF349DD912E784A5A5C4395A99759 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				45E74645D920633414B1A138BC2DD655 /* LICENSE */,
+				AFE2A71BF3227E6436EFEF419A906D1E /* QuickTicker.podspec */,
+				58CA5BC561EFE951524F1C16588DFA6D /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		3AB21D19141473C041B81E4BB8E21D0B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE92C1889161D2164FFFCF8382EF01B3 /* Pods-QuickTicker_Example */,
+				F7ACFA701C2A81F2D6F2615C4C3EA778 /* Pods-QuickTicker_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438B396F6B4147076630CAEFE34282C1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
+				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5B501636A81291E0299A9693D7B371EE /* QuickTicker */ = {
+			isa = PBXGroup;
+			children = (
+				3077F7A29E76F16A63E750D9A46D2485 /* QuickTicker.swift */,
+				207AF349DD912E784A5A5C4395A99759 /* Pod */,
+				95CC18B979C1B6FD41364F1160AF44BB /* Support Files */,
+			);
+			name = QuickTicker;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				1D3228C3B6EFA6CC818CF5AE11BE7445 /* Development Pods */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				FF0062B4D3DA7AF7FDD94E60FA1181E1 /* Products */,
+				3AB21D19141473C041B81E4BB8E21D0B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		95CC18B979C1B6FD41364F1160AF44BB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D24EE543414F33E06B03EE209BDB632B /* Info.plist */,
+				2CA9953818446E956B4F2C8EE73BB7F4 /* QuickTicker.modulemap */,
+				251C9DACCEC047CBA4F978A28F05C63D /* QuickTicker.xcconfig */,
+				FEF9F3E4BC53438A299BDA3767E6C00C /* QuickTicker-dummy.m */,
+				687A921B4DB6DB7EDDBAC1CDFB649D3D /* QuickTicker-prefix.pch */,
+				1BCA8EC00D1E7EB4A2604E1AF263E2AF /* QuickTicker-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/QuickTicker";
+			sourceTree = "<group>";
+		};
+		F7ACFA701C2A81F2D6F2615C4C3EA778 /* Pods-QuickTicker_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				899BA96F51335802017B12C85D270D23 /* Info.plist */,
+				CB8DB925DC6E6B4C1ACFA9675710DD8F /* Pods-QuickTicker_Tests.modulemap */,
+				59793D8FAA15A2111FD18E0883AB269B /* Pods-QuickTicker_Tests-acknowledgements.markdown */,
+				7F01280DF3057DDA2BE51F4A96FDC53E /* Pods-QuickTicker_Tests-acknowledgements.plist */,
+				D9E9F404B66A1E0F22C38A37475D6361 /* Pods-QuickTicker_Tests-dummy.m */,
+				914F9F2A61EB618D08BB0AF730A94E06 /* Pods-QuickTicker_Tests-frameworks.sh */,
+				362A1554FCD3BFC3DDDCA018C6AF986B /* Pods-QuickTicker_Tests-resources.sh */,
+				DCCE101F8FB8DDEAEDA4C874580F98D6 /* Pods-QuickTicker_Tests-umbrella.h */,
+				820036674A7CD00AFD386FDC257EF2DA /* Pods-QuickTicker_Tests.debug.xcconfig */,
+				2201B6C3BE88FEDEBC24C62315837630 /* Pods-QuickTicker_Tests.release.xcconfig */,
+			);
+			name = "Pods-QuickTicker_Tests";
+			path = "Target Support Files/Pods-QuickTicker_Tests";
+			sourceTree = "<group>";
+		};
+		FE92C1889161D2164FFFCF8382EF01B3 /* Pods-QuickTicker_Example */ = {
+			isa = PBXGroup;
+			children = (
+				D904C6126328AE9FCB7D185BD80D16BC /* Info.plist */,
+				6A4A73DE5A18521F627D72F726A6369B /* Pods-QuickTicker_Example.modulemap */,
+				2764CE940D817EE1EA56F56DF169A18A /* Pods-QuickTicker_Example-acknowledgements.markdown */,
+				A827A734285EE047E8A349A4D5DD739C /* Pods-QuickTicker_Example-acknowledgements.plist */,
+				63BAEE6A2DFED815DFF0F8B9BE5306D8 /* Pods-QuickTicker_Example-dummy.m */,
+				1DEFE19418E3D925B1736A212BA48F65 /* Pods-QuickTicker_Example-frameworks.sh */,
+				FD8983C0AAF1104C0B2D528EF4D95088 /* Pods-QuickTicker_Example-resources.sh */,
+				41D9EDE6522BD60878C832C2BD57E735 /* Pods-QuickTicker_Example-umbrella.h */,
+				C14068977303CD9CF196A93DCF1C896B /* Pods-QuickTicker_Example.debug.xcconfig */,
+				B995ED4852AE6A8D5DF06C72638CBFF0 /* Pods-QuickTicker_Example.release.xcconfig */,
+			);
+			name = "Pods-QuickTicker_Example";
+			path = "Target Support Files/Pods-QuickTicker_Example";
+			sourceTree = "<group>";
+		};
+		FF0062B4D3DA7AF7FDD94E60FA1181E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25182CEAC8014E057099D0FC8ABCB07B /* Pods_QuickTicker_Example.framework */,
+				41E58A26286FE01859552E708B8EE6A5 /* Pods_QuickTicker_Tests.framework */,
+				23AC973D59CD8A4FB07F2A382AB54AED /* QuickTicker.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		11B000C43235DFBFD10FD4A986FFB338 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB5CC89ED014C68153BAFE98FD4B097C /* Pods-QuickTicker_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8006DA0EC6468B930966099D0DEA90C5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05FFB4C9606729F498DC67F0A5696066 /* QuickTicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3B80FB95CE9599207BD667336F9926A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D74148AF556E77392F077BFDFA09F6E /* Pods-QuickTicker_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		01F8881D8B2F30D4D3E7B4DAF414B683 /* Pods-QuickTicker_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 158608D3AEA576BA59AE3375A2CBA184 /* Build configuration list for PBXNativeTarget "Pods-QuickTicker_Example" */;
+			buildPhases = (
+				C42093A4338E712851CF18385E626F1D /* Sources */,
+				99ADAF7F17B3F6FFA22E05F76B19720F /* Frameworks */,
+				11B000C43235DFBFD10FD4A986FFB338 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A8908F35B6A9A2A9AA7B4CA14361DA8 /* PBXTargetDependency */,
+			);
+			name = "Pods-QuickTicker_Example";
+			productName = "Pods-QuickTicker_Example";
+			productReference = 25182CEAC8014E057099D0FC8ABCB07B /* Pods_QuickTicker_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		33C5BBEEFAFC0CE9DD951D95D7147048 /* QuickTicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F00A5CB89B1532CE8C4E14602FA2DBEB /* Build configuration list for PBXNativeTarget "QuickTicker" */;
+			buildPhases = (
+				01B35FA252ED5CB28C7E604E9B853259 /* Sources */,
+				99280F2FC528E078C7F584E8E53DD9BF /* Frameworks */,
+				8006DA0EC6468B930966099D0DEA90C5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickTicker;
+			productName = QuickTicker;
+			productReference = 23AC973D59CD8A4FB07F2A382AB54AED /* QuickTicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		675FF1C29AA372AA794C928A5B1DED36 /* Pods-QuickTicker_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 204DA0DD44F9641B7A4CB504A056C652 /* Build configuration list for PBXNativeTarget "Pods-QuickTicker_Tests" */;
+			buildPhases = (
+				D82DDF89165FA2863F770552B135EDA1 /* Sources */,
+				286626CE875553B1A78C99D14CED8C05 /* Frameworks */,
+				C3B80FB95CE9599207BD667336F9926A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6EA47249015244928633A42265B84696 /* PBXTargetDependency */,
+			);
+			name = "Pods-QuickTicker_Tests";
+			productName = "Pods-QuickTicker_Tests";
+			productReference = 41E58A26286FE01859552E708B8EE6A5 /* Pods_QuickTicker_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 1000;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = FF0062B4D3DA7AF7FDD94E60FA1181E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01F8881D8B2F30D4D3E7B4DAF414B683 /* Pods-QuickTicker_Example */,
+				675FF1C29AA372AA794C928A5B1DED36 /* Pods-QuickTicker_Tests */,
+				33C5BBEEFAFC0CE9DD951D95D7147048 /* QuickTicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01B35FA252ED5CB28C7E604E9B853259 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8970D559AFFEF9F2D86F13F267D4D9E4 /* QuickTicker-dummy.m in Sources */,
+				6D65B0DF2864D4B7CE203DFD49CC83F3 /* QuickTicker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C42093A4338E712851CF18385E626F1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89FB0DFA58973BE01BDEE3C7ABA77462 /* Pods-QuickTicker_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D82DDF89165FA2863F770552B135EDA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				132492109B7FE17998A80CF35701D65A /* Pods-QuickTicker_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6EA47249015244928633A42265B84696 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-QuickTicker_Example";
+			target = 01F8881D8B2F30D4D3E7B4DAF414B683 /* Pods-QuickTicker_Example */;
+			targetProxy = D6B47CAC3D11595D2EA6B1E6DD64C800 /* PBXContainerItemProxy */;
+		};
+		8A8908F35B6A9A2A9AA7B4CA14361DA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QuickTicker;
+			target = 33C5BBEEFAFC0CE9DD951D95D7147048 /* QuickTicker */;
+			targetProxy = 8ABD1EA8ECF262EFC987D37AF7586935 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		08638A96A528B1EC32DE62F8A728389D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		278272A7AA674A7273EB13FA70289A6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 251C9DACCEC047CBA4F978A28F05C63D /* QuickTicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/QuickTicker/QuickTicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QuickTicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QuickTicker/QuickTicker.modulemap";
+				PRODUCT_MODULE_NAME = QuickTicker;
+				PRODUCT_NAME = QuickTicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		42C1FBD02B7A55F3FA7E49A0724B16A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 820036674A7CD00AFD386FDC257EF2DA /* Pods-QuickTicker_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QuickTicker_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QuickTicker_Tests/Pods-QuickTicker_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		674FE43DFF1F1136275486BE17E06717 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B995ED4852AE6A8D5DF06C72638CBFF0 /* Pods-QuickTicker_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QuickTicker_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QuickTicker_Example/Pods-QuickTicker_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7FAA07D9F563C9169E4D1104F57E9932 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 251C9DACCEC047CBA4F978A28F05C63D /* QuickTicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/QuickTicker/QuickTicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QuickTicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QuickTicker/QuickTicker.modulemap";
+				PRODUCT_MODULE_NAME = QuickTicker;
+				PRODUCT_NAME = QuickTicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		A739F050D64BD17782B6F530A249AB4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C14068977303CD9CF196A93DCF1C896B /* Pods-QuickTicker_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QuickTicker_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QuickTicker_Example/Pods-QuickTicker_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C53CDB780A1A257D89FFA72688750D66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2201B6C3BE88FEDEBC24C62315837630 /* Pods-QuickTicker_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-QuickTicker_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-QuickTicker_Tests/Pods-QuickTicker_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		158608D3AEA576BA59AE3375A2CBA184 /* Build configuration list for PBXNativeTarget "Pods-QuickTicker_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A739F050D64BD17782B6F530A249AB4B /* Debug */,
+				674FE43DFF1F1136275486BE17E06717 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		204DA0DD44F9641B7A4CB504A056C652 /* Build configuration list for PBXNativeTarget "Pods-QuickTicker_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42C1FBD02B7A55F3FA7E49A0724B16A4 /* Debug */,
+				C53CDB780A1A257D89FFA72688750D66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */,
+				08638A96A528B1EC32DE62F8A728389D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F00A5CB89B1532CE8C4E14602FA2DBEB /* Build configuration list for PBXNativeTarget "QuickTicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278272A7AA674A7273EB13FA70289A6A /* Debug */,
+				7FAA07D9F563C9169E4D1104F57E9932 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
