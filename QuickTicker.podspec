@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/almaleh/Quick-Ticker'
-  s.screenshots      = 'https://github.com/almaleh/Quick-Ticker/blob/master/Images/screenshot.png'#, 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://raw.githubusercontent.com/almaleh/Quick-Ticker/master/Images/screenshot.jpg'#, 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'BesherAlMaleh' => 'almalehdev@gmail.com' }
   s.source           = { :git => 'https://github.com/AlMaleh/Quick-Ticker.git', :tag => s.version.to_s }

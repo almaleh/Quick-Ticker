@@ -141,6 +141,19 @@ class QuickTickerTests: XCTestCase {
         if let start = start4, let end = end4, let labelText = textLabel.text {
             XCTAssertEqual(String(labelText[start...end]), "98")
         }
+        
+        let noDigitsLabel = UILabel()
+        noDigitsLabel.text = "Label"
+        let (start5, end5) = object.getFirstAndLastDigitIndexes(for: noDigitsLabel)
+        if let labelText = noDigitsLabel.text {
+            if let start = start5, let end = end5 {
+                XCTAssertEqual(String(labelText[start...end]), "")
+            } else {
+                let decimalCharacters = CharacterSet.decimalDigits
+                let decimalRange = labelText.rangeOfCharacter(from: decimalCharacters)
+                XCTAssert(decimalRange == nil)
+            }
+        }
     }
     
     func testGetValueFromPercentage() {
@@ -175,6 +188,10 @@ class QuickTickerTests: XCTestCase {
         label.text = "29.19 meters"
         object.updateDigitsWhileKeepingText(for: label, value: "10009.300")
         XCTAssert(label.text == "10009.300 meters")
+        
+        label.text = "Label"
+        object.updateDigitsWhileKeepingText(for: label, value: "10009.300")
+        XCTAssert(label.text == "10009.300")
     }
     
     func testUpdateLabel() {
