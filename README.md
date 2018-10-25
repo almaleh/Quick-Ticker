@@ -6,16 +6,25 @@
 
 <p align="center"><img src="https://github.com/almaleh/Quick-Ticker/blob/master/Images/Demo.gif" width="350" /></p>
 
+[![Version](https://img.shields.io/cocoapods/v/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
+[![License](https://img.shields.io/cocoapods/l/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
+[![Platform](https://img.shields.io/cocoapods/p/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
+![Swift 4](https://img.shields.io/badge/swift-4.2-orange.svg)
+
 ## Installation
 
 <b>Manually:</b>
 
-Simply copy the QuickTicker.Swift file in Sources to your project
+Simply copy the QuickTicker.Swift file to your project (it is located in QuickTicker > Classes)
 
 <b>Cocoapods:</b>
 
-Coming soon!
+QuickTicker is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
+```ruby
+pod 'QuickTicker'
+```
 
 ## Features
 
@@ -83,7 +92,7 @@ Sample App:<br>
 
 ## Try it!
 
-The example project demonstrates the different ways to use the library. Clone it and give it a try!
+To run the example project, clone the repo, and launch QuickTicker.xcworkspace from the Example directory.
 
 ## Requirements
 
@@ -114,23 +123,3 @@ Contributors are welcome!
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
-
-
-[![CI Status](https://img.shields.io/travis/BesherAlMaleh/QuickTicker.svg?style=flat)](https://travis-ci.org/BesherAlMaleh/QuickTicker)
-[![Version](https://img.shields.io/cocoapods/v/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
-[![License](https://img.shields.io/cocoapods/l/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
-[![Platform](https://img.shields.io/cocoapods/p/QuickTicker.svg?style=flat)](https://cocoapods.org/pods/QuickTicker)
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-
-## Installation
-
-QuickTicker is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'QuickTicker'
-```
