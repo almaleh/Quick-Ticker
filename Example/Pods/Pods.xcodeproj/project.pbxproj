@@ -41,17 +41,17 @@
 		1BCA8EC00D1E7EB4A2604E1AF263E2AF /* QuickTicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QuickTicker-umbrella.h"; sourceTree = "<group>"; };
 		1DEFE19418E3D925B1736A212BA48F65 /* Pods-QuickTicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2201B6C3BE88FEDEBC24C62315837630 /* Pods-QuickTicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		23AC973D59CD8A4FB07F2A382AB54AED /* QuickTicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuickTicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25182CEAC8014E057099D0FC8ABCB07B /* Pods_QuickTicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickTicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23AC973D59CD8A4FB07F2A382AB54AED /* QuickTicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = QuickTicker.framework; path = QuickTicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25182CEAC8014E057099D0FC8ABCB07B /* Pods_QuickTicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QuickTicker_Example.framework; path = "Pods-QuickTicker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		251C9DACCEC047CBA4F978A28F05C63D /* QuickTicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QuickTicker.xcconfig; sourceTree = "<group>"; };
 		2764CE940D817EE1EA56F56DF169A18A /* Pods-QuickTicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QuickTicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2CA9953818446E956B4F2C8EE73BB7F4 /* QuickTicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QuickTicker.modulemap; sourceTree = "<group>"; };
 		3077F7A29E76F16A63E750D9A46D2485 /* QuickTicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTicker.swift; path = QuickTicker/Classes/QuickTicker.swift; sourceTree = "<group>"; };
 		362A1554FCD3BFC3DDDCA018C6AF986B /* Pods-QuickTicker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Tests-resources.sh"; sourceTree = "<group>"; };
 		41D9EDE6522BD60878C832C2BD57E735 /* Pods-QuickTicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QuickTicker_Example-umbrella.h"; sourceTree = "<group>"; };
-		41E58A26286FE01859552E708B8EE6A5 /* Pods_QuickTicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickTicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45E74645D920633414B1A138BC2DD655 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		58CA5BC561EFE951524F1C16588DFA6D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		41E58A26286FE01859552E708B8EE6A5 /* Pods_QuickTicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QuickTicker_Tests.framework; path = "Pods-QuickTicker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45E74645D920633414B1A138BC2DD655 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		58CA5BC561EFE951524F1C16588DFA6D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		59793D8FAA15A2111FD18E0883AB269B /* Pods-QuickTicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QuickTicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		63BAEE6A2DFED815DFF0F8B9BE5306D8 /* Pods-QuickTicker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QuickTicker_Example-dummy.m"; sourceTree = "<group>"; };
 		687A921B4DB6DB7EDDBAC1CDFB649D3D /* QuickTicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QuickTicker-prefix.pch"; sourceTree = "<group>"; };
@@ -60,9 +60,9 @@
 		820036674A7CD00AFD386FDC257EF2DA /* Pods-QuickTicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		899BA96F51335802017B12C85D270D23 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		914F9F2A61EB618D08BB0AF730A94E06 /* Pods-QuickTicker_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QuickTicker_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A827A734285EE047E8A349A4D5DD739C /* Pods-QuickTicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QuickTicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		AFE2A71BF3227E6436EFEF419A906D1E /* QuickTicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = QuickTicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AFE2A71BF3227E6436EFEF419A906D1E /* QuickTicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = QuickTicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B995ED4852AE6A8D5DF06C72638CBFF0 /* Pods-QuickTicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C14068977303CD9CF196A93DCF1C896B /* Pods-QuickTicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QuickTicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -440,7 +440,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

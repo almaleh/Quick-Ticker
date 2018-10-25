@@ -1,5 +1,5 @@
 PODS:
-  - QuickTicker (0.1.0)
+  - QuickTicker (0.1.2)
 
 DEPENDENCIES:
   - QuickTicker (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  QuickTicker: 618151b99358063da1dce70c192ea50b99052435
+  QuickTicker: 51391006f323da1b4f754bf90c447550c8cd24cb
 
 PODFILE CHECKSUM: 7139b764064c712a4be31fead694bd01fbd1378b
 
