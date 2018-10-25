@@ -45,10 +45,9 @@ QuickTicker.animate(label: textLabel, toEndValue: 250, options: [.easeOut])
 
 You can optionally specify the duration, the animation curve, decimal points, and add a completion handler to be executed at the end of the animation. 
 ```swift
-QuickTicker.animate(label: textLabel, toEndValue: 250, duration: 4.3, 
-                    options: [.easeOut, .decimalPoints(2)], completion: {
-	print("Ticker animation done!")
-	})
+QuickTicker.animate(label: textLabel, toEndValue: 250, duration: 4.3, options: [.easeOut, .decimalPoints(2)], completion: {
+                        print("Ticker animation done!")
+                    })
 ```
 
 ## Compatible Types
@@ -134,4 +133,4 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'QuickTicker'
-
+```

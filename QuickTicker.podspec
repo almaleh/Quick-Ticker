@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.screenshots      = 'https://github.com/almaleh/Quick-Ticker/blob/master/Images/screenshot.png'#, 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'BesherAlMaleh' => 'almalehdev@gmail.com' }
-  s.source           = { :git => 'https://github.com/AlMaleh/QuickTicker.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/AlMaleh/Quick-Ticker.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/BesherMaleh'
 
   s.ios.deployment_target = '8.0'
