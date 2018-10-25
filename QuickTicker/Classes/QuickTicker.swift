@@ -254,14 +254,12 @@ extension QTObject {
     
     func updateDigitsWhileKeepingText(for label: TextLabel?, value: String) {
         let (startIndex, endIndex) = getFirstAndLastDigitIndexes(for: label)
-        print(startIndex, endIndex)
         if let start = startIndex, let end = endIndex {
             var updatedText = label?.text ?? ""
             // replace old digits with new values
             updatedText.removeSubrange(start...end)
             updatedText.insert(contentsOf: value, at: start)
             label?.text = updatedText
-            print("Insider")
         } else {
             // if there are no digits in starting value, we update the entire label
             label?.text = value
