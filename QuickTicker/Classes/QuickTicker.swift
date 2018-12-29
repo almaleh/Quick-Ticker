@@ -54,13 +54,13 @@ public class QuickTicker {
     
     /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration and linear curve
     public class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T, completion: (() -> Void)? = nil) {
-        animate(label: label, toEndValue: endValue, duration: 2, options: [.linear])
+        animate(label: label, toEndValue: endValue, duration: 2, options: [.linear], completion: completion)
     }
     
     /// Starts a ticker animation on a UILabel or TextField using a default 2 second duration
     public class func animate<T: NumericValue, L: TextLabel>(label: L?, toEndValue endValue: T,
                                                       options: [Options], completion: (() -> Void)? = nil) {
-        animate(label: label, toEndValue: endValue, duration: 2, options: options)
+        animate(label: label, toEndValue: endValue, duration: 2, options: options, completion: completion)
     }
     
 }
@@ -94,7 +94,7 @@ internal class QTObject<T: NumericValue> {
         animationCurve = getCurveFrom(options)
         animationCompletion = completion
         animationDisplayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
-        animationDisplayLink?.add(to: .main, forMode: RunLoop.Mode.default)
+        animationDisplayLink?.add(to: .main, forMode: RunLoop.Mode.common)
         userRequestedNumberOfDecimals = getUserRequestedDecimal(from: options)
     }
     

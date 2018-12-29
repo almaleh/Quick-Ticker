@@ -19,7 +19,7 @@ Simply copy the QuickTicker.Swift file to your project (it is located in QuickTi
 
 <b>Cocoapods:</b>
 
-QuickTicker is available through [CocoaPods](https://cocoapods.org). To install
+QuickTicker is also available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
