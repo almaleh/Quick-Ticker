@@ -100,11 +100,6 @@ To run the example project, clone the repo, and launch QuickTicker.xcworkspace f
 - Swift 4.2 (you can run it on 4.0 by changing the CADisplayLink api call, one line of code)
 - Xcode 10 (same as above to run on older Xcode)
 
-## Release History
-
-* 0.0.1
-    * Initial release
-
 ## Author
 
 Besher Al Maleh – almalehdev@gmail.com
